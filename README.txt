@@ -15,3 +15,8 @@ text를 넣는 것도 인스턴스를 만들어서 text를 따로 넣게 만들�
 
 일단 만들면서 시범적으로 엘리먼트를 몇개 만들어 보았는데 정상적으로 작동이 됐다. 그래서 일단 사용해 봐야겠다.
 
+- 수정
+
+this.write(element); 
+	↓
+if (element.selector != null) this.write(element);

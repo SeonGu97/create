@@ -3,7 +3,7 @@
 export default class Text {
   constructor(data) {
     data.forEach((element) => {
-      this.write(element);
+      if (element.selector != null) this.write(element);
     });
   }
 
