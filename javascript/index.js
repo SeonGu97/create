@@ -1,14 +1,43 @@
-"ues strict";
+"use strict";
 
-import create from "../create/create.js";
-import data from "../data/data.js";
-import Text from "../text/text.js";
+import Generate from "../generate/generate.js";
+const generate = Generate;
+
+import Wrap from "./wrap/wrap.js";
 
 export default class Index {
-  constructor(create, data, index, parent, num) {
-    this.index = new create(index, parent, num);
+  constructor(generate, name, element, type, value, parent, number, text) {
+    this.index = new generate(
+      name,
+      element,
+      type,
+      value,
+      parent,
+      2,
+      text,
+      this
+    );
+
+    this.wrap = new Wrap(
+      generate,
+      "wrap",
+      "div",
+      ["class", "id"],
+      ["wraps", "wrap"],
+      this.__proto__.elements,
+      1,
+      "warp"
+    );
   }
 }
 
-const index = new Index(create, data, 0, document.body, 1);
-const text = new Text(data);
+const index = new Index(
+  generate,
+  "index",
+  "div",
+  "id",
+  "index",
+  document.body,
+  2,
+  ["index1", "index2"]
+);

@@ -20,3 +20,10 @@ text를 넣는 것도 인스턴스를 만들어서 text를 따로 넣게 만들�
 this.write(element); 
 	↓
 if (element.selector != null) this.write(element);
+
+(23.06.06)
+- create.js -> generate.js 이름 변경, 코드 리펙토링
+
+- create.js로 프로젝트를 만들면서 이상한 부분이 있어서 코드를 리펙토링했다.
+그 부분은 만들고자 하는 인스턴스를 만들면 인스턴스의 이름이 달라도 코드 내용이 같았다.
+그래서 문제를 느끼고 코드를 리펙토링했다. 

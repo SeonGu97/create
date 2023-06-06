@@ -1,33 +1,34 @@
 "use strict";
 
 export default class Selector {
-  constructor(data) {
-    let type;
+  constructor(This, name, type, value) {
+    this.This = This;
+    this.name = name;
+    this.type = type;
+    this.value = value;
 
-    data.type == "id"
-      ? (type = "#")
-      : data.type == "class"
-      ? (type = ".")
-      : (type = "");
+    this.reset();
+  }
 
-    const pattern = /\s/g;
-
-    if (data.value[0] != undefined) {
-      this.space = Array.isArray(data.value[0].match(pattern));
-    }
-
-    if (this.space) {
-      const array = data.value[0].split(pattern);
-
-      for (let i = 0; i < array.length; i++) {
-        data.selector = document.querySelectorAll(`${type}${array[i]}`);
-      }
+  reset() {
+    if (Array.isArray(this.type)) {
+      this.typeSelector(this.type[0]);
     } else {
-      if (!type == "") {
-        data.selector = document.querySelectorAll(`${type}${data.value[0]}`);
-      } else {
-        data.selector = document.querySelectorAll(data.element);
-      }
+      this.typeSelector(this.type);
+    }
+  }
+
+  typeSelector(type) {
+    if (type == "id") {
+      this.This.__proto__.elements = document.querySelectorAll(
+        `#${this.value}`
+      );
+    } else if (type == "class") {
+      this.This.__proto__.elements = document.querySelectorAll(
+        `.${this.value}`
+      );
+    } else {
+      this.This.__proto__.elements = document.querySelectorAll(this.name);
     }
   }
 }
